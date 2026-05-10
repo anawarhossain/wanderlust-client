@@ -8,16 +8,24 @@ const Navbar = () => {
       <nav className="flex justify-between p-5">
         <ul className="flex gap-3">
           <li>
-            <Link href={"/"}>Home</Link>
+            <Link className="hover:text-cyan-500" href={"/"}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link href={"/destinations"}>Destinations</Link>
+            <Link className="hover:text-cyan-500" href={"/destinations"}>
+              Destinations
+            </Link>
           </li>
           <li>
-            <Link href={"/my-bookings"}>My Bookings</Link>
+            <Link className="hover:text-cyan-500" href={"/my-bookings"}>
+              My Bookings
+            </Link>
           </li>
           <li>
-            <Link href={"/admin"}>Admin</Link>
+            <Link className="hover:text-cyan-500" href={"/add-destination"}>
+              Add Destination
+            </Link>
           </li>
         </ul>
 
@@ -27,17 +35,24 @@ const Navbar = () => {
             height={200}
             width={200}
             alt="Wanderlast"
+            className="w-auto h-auto"
           />
         </div>
         <ul className="flex gap-3">
           <li>
-            <Link href={"/profile"}>Profile</Link>
+            <Link className="hover:text-cyan-500" href={"/profile"}>
+              Profile
+            </Link>
           </li>
           <li>
-            <Link href={"/login"}>Login</Link>
+            <Link className="hover:text-cyan-500" href={"/login"}>
+              Login
+            </Link>
           </li>
           <li>
-            <Link href={"/signup"}>Sign Up</Link>
+            <Link className="hover:text-cyan-500" href={"/signup"}>
+              Sign Up
+            </Link>
           </li>
         </ul>
       </nav>
