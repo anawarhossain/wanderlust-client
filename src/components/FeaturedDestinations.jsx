@@ -71,7 +71,11 @@ const FeaturedDestinations = () => {
             className="flex gap-6 md:gap-10 overflow-x-auto no-scrollbar pb-12 cursor-grab active:cursor-grabbing scroll-smooth"
           >
             {destinations.map((dest, index) => (
-              <DestinationCard key={index} {...dest} />
+              <DestinationCard
+                key={index}
+                {...dest}
+                isSlider={true} // এখানে অ্যানিমেশন এবং স্লাইডার উইডথ কাজ করবে
+              />
             ))}
           </motion.div>
         </div>

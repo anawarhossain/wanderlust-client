@@ -1,13 +1,8 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
-import { motion, useScroll, useSpring } from "framer-motion";
-import {
-  MapPin,
-  Calendar,
-  ArrowUpRight,
-  Star,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, Calendar, ArrowUpRight, Star } from "lucide-react";
 
 const DestinationCard = ({
   location,
@@ -16,13 +11,26 @@ const DestinationCard = ({
   duration,
   rating,
   image,
-}) => (
-  <div>
-    <motion.div
-      className="min-w-[85vw] md:min-w-100 flex flex-col group cursor-grab active:cursor-grabbing select-none"
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
+  isSlider = false, // ডিফল্টভাবে এটি স্লাইডার হিসেবে কাজ করবে না
+}) => {
+  // স্লাইডার হলে motion.div ব্যবহার হবে, নয়তো সাধারণ div
+  const Container = isSlider ? motion.div : "div";
+
+  const sliderProps = isSlider
+    ? {
+        whileHover: { y: -8 },
+        transition: { type: "spring", stiffness: 300 },
+        className:
+          "min-w-[85vw] md:min-w-[400px] flex flex-col group cursor-grab active:cursor-grabbing select-none",
+      }
+    : {
+        className:
+          "w-full flex flex-col group select-none hover:-translate-y-2 transition-transform duration-300",
+      };
+
+  return (
+    <Container {...sliderProps}>
+      {/* Image Container */}
       <div className="relative h-64 md:h-80 w-full overflow-hidden mb-5 rounded-md">
         <Image
           src={image}
@@ -31,12 +39,13 @@ const DestinationCard = ({
           sizes="(max-width: 768px) 100vw, 400px"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-sm flex items-center gap-1 shadow-sm">
+        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-sm flex items-center gap-1 shadow-sm">
           <span className="text-xs font-bold text-gray-900">{rating}</span>
           <Star size={12} className="fill-black text-black" />
         </div>
       </div>
 
+      {/* Details */}
       <div className="space-y-3 pr-4">
         <div className="flex items-center gap-1 text-gray-400 text-[10px] md:text-xs">
           <MapPin size={14} />
@@ -72,8 +81,8 @@ const DestinationCard = ({
           />
         </button>
       </div>
-    </motion.div>
-  </div>
-);
+    </Container>
+  );
+};
 
 export default DestinationCard;
