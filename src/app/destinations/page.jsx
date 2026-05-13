@@ -24,7 +24,7 @@ const DestinationsPage = () => {
       </div>
 
       <div className="grid grid-cols-3">
-        <ComboBox className="border rounded-lg">
+        <ComboBox aria-label="category" className="border rounded-lg">
           <ComboBox.InputGroup>
             <Input placeholder="CATEGORY" />
             <ComboBox.Trigger />
@@ -35,11 +35,10 @@ const DestinationsPage = () => {
                 Category
                 <ListBox.ItemIndicator />
               </ListBox.Item>
-              
             </ListBox>
           </ComboBox.Popover>
         </ComboBox>
-        <ComboBox className="border rounded-lg">
+        <ComboBox aria-label="category" className="border rounded-lg">
           <ComboBox.InputGroup>
             <Input placeholder="PRICE RANGE" />
             <ComboBox.Trigger />
@@ -47,13 +46,13 @@ const DestinationsPage = () => {
           <ComboBox.Popover>
             <ListBox>
               <ListBox.Item id="price" textValue="Price">
-                Price 
+                Price
                 <ListBox.ItemIndicator />
               </ListBox.Item>
             </ListBox>
           </ComboBox.Popover>
         </ComboBox>
-        <ComboBox className="border rounded-lg">
+        <ComboBox aria-label="category" className="border rounded-lg">
           <ComboBox.InputGroup>
             <Input placeholder="SORT BY" />
             <ComboBox.Trigger />
@@ -67,6 +66,12 @@ const DestinationsPage = () => {
             </ListBox>
           </ComboBox.Popover>
         </ComboBox>
+      </div>
+
+      <div>
+        <p className="text-gray-500 text-base md:text-lg font-light">
+          Showing {allDestinations.length} destinations
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">

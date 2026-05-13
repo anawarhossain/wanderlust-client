@@ -4,8 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react"; // আইকনের জন্য lucide-react ব্যবহার করা হয়েছে
+import { useParams, usePathname } from "next/navigation";
 
 const Navbar = () => {
+  
+  const pathName = usePathname()
+  console.log(pathName)
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -33,7 +37,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-cyan-500 transition-colors text-sm font-medium"
+                className={`hover:text-cyan-500 transition-colors text-sm font-medium ${pathName == link.href ? "text-cyan-500" : "text-gray-600 "}`}
               >
                 {link.name}
               </Link>
@@ -41,7 +45,7 @@ const Navbar = () => {
           </div>
 
           {/* Logo - Always Center on Desktop, Left/Center on Mobile */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href="/">
               <Image
                 src="/assets/Wanderlast.png"
@@ -59,7 +63,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-cyan-500 transition-colors text-sm font-medium"
+                className={`hover:text-cyan-500 transition-colors text-sm font-medium ${pathName == link.href ? "text-cyan-500" : "text-gray-600 "}`}
               >
                 {link.name}
               </Link>
