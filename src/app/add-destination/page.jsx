@@ -9,6 +9,7 @@ import {
   TextArea,
   Button,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
 const AddDestinationPage = () => {
@@ -32,7 +33,10 @@ const AddDestinationPage = () => {
           body: JSON.stringify(destination)
       });
       const data = await res.json()
-      console.log(data)
+    console.log(data)
+    if (data.insertedId) {
+      redirect("/destinations");
+    }
 
     setIsPending(false);
   };

@@ -1,16 +1,20 @@
 import DestinationCard from "@/components/DestinationCard";
 import FeaturedDestinations from "@/components/FeaturedDestinations";
+import { getAllDestinations } from "@/lib/data";
 import { ComboBox, Input, Label, ListBox } from "@heroui/react";
 
-const DestinationsPage = () => {
-  const allDestinations = Array(5).fill({
-    location: "Indonesia",
-    title: "Bali Paradise",
-    price: "2700",
-    duration: "7 Days/6 Nights",
-    rating: "4.5",
-    image: "/assets/destinations/image1.png",
-  });
+const DestinationsPage = async () => {
+  // const allDestinations = Array(5).fill({
+  //   location: "Indonesia",
+  //   title: "Bali Paradise",
+  //   price: "2700",
+  //   duration: "7 Days/6 Nights",
+  //   rating: "4.5",
+  //   image: "/assets/destinations/image1.png",
+  // });
+
+  const allDestinations = await getAllDestinations();
+  console.log(allDestinations);
 
   return (
     <div className="w-[90%] mx-auto mt-9 mb-9 space-y-5">
